@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fiche interactive – Les types de génitif en latin</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f6f9fc;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    th {
+      background-color: #e3eaf2;
+      color: #2c3e50;
+    }
+
+    tr:hover {
+      background-color: #f0f8ff;
+      cursor: pointer;
+    }
+
+    .tooltip {
+      display: none;
+      padding: 1rem;
+      background: #ffffff;
+      color: #333;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      position: fixed;
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 1000;
+    }
+
+    .tooltip.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Les types de génitif en latin</h1>
+
+  <table id="genitifTable">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Fonction</th>
+        <th>Traduction</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-tooltip="liber magistrī — le livre du maître">
+        <td>Possession</td>
+        <td>Indique le possesseur</td>
+        <td>de / à</td>
+      </tr>
+      <tr data-tooltip="pars exercitūs — une partie de l’armée">
+        <td>Partitif</td>
+        <td>Exprime une partie d’un tout</td>
+        <td>de parmi / d’entre</td>
+      </tr>
+      <tr data-tooltip="amor patriae — l’amour de la patrie (on aime la patrie)">
+        <td>Objectif</td>
+        <td>Le génitif est l’objet du nom</td>
+        <td>de / envers</td>
+      </tr>
+      <tr data-tooltip="adventus Caesaris — l’arrivée de César (César arrive)">
+        <td>Subjectif</td>
+        <td>Le génitif est le sujet du nom</td>
+        <td>de</td>
+      </tr>
+      <tr data-tooltip="vir magnae virtūtis — un homme d’une grande vertu">
+        <td>Qualité</td>
+        <td>Exprime une qualité (avec adjectif)</td>
+        <td>de</td>
+      </tr>
+      <tr data-tooltip="magni aestimare — estimer beaucoup">
+        <td>Prix / valeur</td>
+        <td>Exprime un prix ou une valeur</td>
+        <td>à tel prix</td>
+      </tr>
+      <tr data-tooltip="reus furtī — accusé de vol">
+        <td>Crime / accusation</td>
+        <td>Indique une accusation ou une peine</td>
+        <td>de (juridique)</td>
+      </tr>
+      <tr data-tooltip="meminī patriae — je me souviens de la patrie">
+        <td>Souvenir / oubli</td>
+        <td>Utilisé avec meminī, obliviscor…</td>
+        <td>de</td>
+      </tr>
+      <tr data-tooltip="poculum vīnī — une coupe de vin">
+        <td>Matière / contenu</td>
+        <td>Indique la matière ou le contenu</td>
+        <td>de</td>
+      </tr>
+      <tr data-tooltip="avidus gloriae — avide de gloire">
+        <td>Avec adjectifs</td>
+        <td>Requis par certains adjectifs</td>
+        <td>de</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div id="tooltip" class="tooltip"></div>
+
+  <script>
+    const rows = document.querySelectorAll("#genitifTable tbody tr");
+    const tooltip = document.getElementById("tooltip");
+
+    rows.forEach(row => {
+      row.addEventListener("click", () => {
+        tooltip.textContent = row.getAttribute("data-tooltip");
+        tooltip.classList.add("active");
+        setTimeout(() => tooltip.classList.remove("active"), 8000);
+      });
+    });
+  </script>
+
+</body>
+</html>
